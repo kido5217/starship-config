@@ -1,0 +1,99 @@
+# Don't inserts a blank line between shell prompts
+add_newline = false
+
+command_timeout = 30000
+
+# main command prompt
+format = """
+$username$hostname\
+$shlvl\
+$directory\
+$git_branch\
+$git_status\
+$package\
+$python\
+$rust\
+$fill\
+$memory_usage\
+$status\
+$cmd_duration\
+$time\
+$line_break\
+$character
+"""
+
+[username]
+format = "🧠[$user]($style) ❯ "
+#show_always = true
+
+[hostname]
+format = "🖥 [$hostname]($style) ❯ "
+#ssh_only = false
+
+[shlvl]
+disabled = false
+format = "[$symbol$shlvl]($style) ❯ "
+#symbol = "↕️"
+symbol = "📥"
+# set to "3" in GUI and to "2" in headless servers
+threshold = 3
+
+[directory]
+format = "📁[$path]($style)[$read_only]($read_only_style) ❯ "
+
+[git_branch]
+format = "[$symbol$branch]($style) ❯ "
+#symbol = ""
+symbol = "🌱"
+
+[git_status]
+format = '(📝[\[$all_status$ahead_behind\]]($style) ❯ )'
+#🪺💾📑📝🗂🗒
+
+[package]
+format = "[$symbol$version]($style) ❯ "
+symbol = "📦"
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)❯ '
+symbol = "🐍"
+
+[rust]
+format = "[$symbol($version )]($style)❯ "
+symbol = "🦀"
+
+[nodejs]
+format = "[$symbol($version )]($style)❯ "
+symbol = ""
+
+[golang]
+format = "[$symbol($version )]($style)❯ "
+symbol = "🐹"
+
+[dart]
+format = "[$symbol($version )]($style)❯ "
+symbol = "🎯"
+
+[fill]
+symbol = " "
+
+[memory_usage]
+#disabled = false
+format = " ❮ $symbol[${ram}( \\| ${swap})]($style)"
+
+[status]
+disabled = false
+format = " ❮ ⛔[$status]($style)"
+#🚪
+
+[cmd_duration]
+format = " ❮ ⌛[$duration]($style)"
+
+[time]
+disabled = false
+format = " ❮ 🕒[$time]($style)"
+#time_format = "%T %d.%m.%y"
+
+[character]
+format = "$symbol "
+
