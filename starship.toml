@@ -1,9 +1,10 @@
-# Don't inserts a blank line between shell prompts
+# Don't insert a blank line between shell prompts
 add_newline = false
 
+# Increase external command execution timeout
 command_timeout = 30000
 
-# main command prompt
+# Main command prompt
 format = """
 $username$hostname\
 $shlvl\
@@ -96,4 +97,3 @@ format = " ❮ 🕒[$time]($style)"
 
 [character]
 format = "$symbol "
-
