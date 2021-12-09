@@ -18,6 +18,14 @@ $fill\
 $memory_usage\
 $status\
 $cmd_duration\
+${custom.systemd_initializing}\
+${custom.systemd_starting}\
+${custom.systemd_running}\
+${custom.systemd_degraded}\
+${custom.systemd_maintenance}\
+${custom.systemd_stopping}\
+${custom.systemd_offline}\
+${custom.systemd_unknown}\
 $time\
 $line_break\
 $character
@@ -97,3 +105,69 @@ format = " ❮ 🕒[$time]($style)"
 
 [character]
 format = "$symbol "
+
+#Systemd status
+[custom.systemd_initializing]
+shell = ["bash", "--noprofile", "--norc"]
+command = "systemctl is-system-running"
+when = '[ `systemctl is-system-running` == "initializing" ]'
+style = "bold yellow"
+format = " ❮ [$symbol($output)]($style)"
+symbol = "🐧"
+
+[custom.systemd_starting]
+shell = ["bash", "--noprofile", "--norc"]
+command = "systemctl is-system-running"
+when = '[ `systemctl is-system-running` == "starting" ]'
+style = "bold yellow"
+format = " ❮ [$symbol($output)]($style)"
+symbol = "🐧"
+
+[custom.systemd_running]
+disabled = true
+shell = ["bash", "--noprofile", "--norc"]
+command = "systemctl is-system-running"
+when = '[ `systemctl is-system-running` == "running" ]'
+style = "bold green"
+format = " ❮ [$symbol($output)]($style)"
+symbol = "🐧"
+
+[custom.systemd_degraded]
+shell = ["bash", "--noprofile", "--norc"]
+command = "systemctl is-system-running"
+when = '[ `systemctl is-system-running` == "degraded" ]'
+style = "bold red"
+format = " ❮ [$symbol($output)]($style)"
+symbol = "🐧"
+
+[custom.systemd_maintenance]
+shell = ["bash", "--noprofile", "--norc"]
+command = "systemctl is-system-running"
+when = '[ `systemctl is-system-running` == "maintenance" ]'
+style = "bold blue"
+format = " ❮ [$symbol($output)]($style)"
+symbol = "🐧"
+
+[custom.systemd_stopping]
+shell = ["bash", "--noprofile", "--norc"]
+command = "systemctl is-system-running"
+when = '[ `systemctl is-system-running` == "stopping" ]'
+style = "bold red"
+format = " ❮ [$symbol($output)]($style)"
+symbol = "🐧"
+
+[custom.systemd_offline]
+shell = ["bash", "--noprofile", "--norc"]
+command = "systemctl is-system-running"
+when = '[ `systemctl is-system-running` == "offline" ]'
+style = "bold red"
+format = " ❮ [$symbol($output)]($style)"
+symbol = "🐧"
+
+[custom.systemd_unknown]
+shell = ["bash", "--noprofile", "--norc"]
+command = "systemctl is-system-running"
+when = '[ `systemctl is-system-running` == "unknown" ]'
+style = "bold red"
+format = " ❮ [$symbol($output)]($style)"
+symbol = "🐧"
