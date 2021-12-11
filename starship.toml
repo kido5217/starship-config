@@ -56,7 +56,7 @@ format = "[$symbol$branch]($style) ❯ "
 symbol = "🌱"
 
 [git_status]
-format = '(📝[\[$all_status$ahead_behind\]]($style) ❯ )'
+format = '(📝[❪$all_status$ahead_behind❫]($style) ❯ )'
 #🪺💾📑📝🗂🗒
 
 [package]
@@ -64,7 +64,7 @@ format = "[$symbol$version]($style) ❯ "
 symbol = "📦"
 
 [python]
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)❯ '
+format = '[${symbol}${pyenv_prefix}(${version} )(❪$virtualenv❫)]($style) ❯ '
 symbol = "🐍"
 
 [rust]
@@ -87,12 +87,12 @@ symbol = "🎯"
 symbol = " "
 
 [memory_usage]
-#disabled = false
-format = " ❮ $symbol[${ram}( \\| ${swap})]($style)"
+disabled = false
+format = ' ❮ $symbol[${ram}( \\| ${swap})]($style)'
 
 [status]
 disabled = false
-format = " ❮ ⛔[$status]($style)"
+format = " ❮ ⛔[❪$status❫]($style)"
 #🚪
 
 [cmd_duration]
