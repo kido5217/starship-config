@@ -26,6 +26,7 @@ ${custom.systemd_maintenance}\
 ${custom.systemd_stopping}\
 ${custom.systemd_offline}\
 ${custom.systemd_unknown}\
+${custom.public_ip}\
 $time\
 $line_break\
 $character
@@ -111,7 +112,7 @@ format = "$symbol "
 [custom.systemd_initializing]
 shell = ["bash", "--noprofile", "--norc"]
 command = "systemctl is-system-running"
-when = '[ `systemctl is-system-running` == "initializing" ]'
+when = '[ `systemctl is-system-running` = "initializing" ]'
 style = "bold yellow"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🐧"
@@ -119,7 +120,7 @@ symbol = "🐧"
 [custom.systemd_starting]
 shell = ["bash", "--noprofile", "--norc"]
 command = "systemctl is-system-running"
-when = '[ `systemctl is-system-running` == "starting" ]'
+when = '[ `systemctl is-system-running` = "starting" ]'
 style = "bold yellow"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🐧"
@@ -128,7 +129,7 @@ symbol = "🐧"
 disabled = true
 shell = ["bash", "--noprofile", "--norc"]
 command = "systemctl is-system-running"
-when = '[ `systemctl is-system-running` == "running" ]'
+when = '[ `systemctl is-system-running` = "running" ]'
 style = "bold green"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🐧"
@@ -136,7 +137,7 @@ symbol = "🐧"
 [custom.systemd_degraded]
 shell = ["bash", "--noprofile", "--norc"]
 command = "systemctl is-system-running"
-when = '[ `systemctl is-system-running` == "degraded" ]'
+when = '[ `systemctl is-system-running` = "degraded" ]'
 style = "bold red"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🐧"
@@ -144,7 +145,7 @@ symbol = "🐧"
 [custom.systemd_maintenance]
 shell = ["bash", "--noprofile", "--norc"]
 command = "systemctl is-system-running"
-when = '[ `systemctl is-system-running` == "maintenance" ]'
+when = '[ `systemctl is-system-running` = "maintenance" ]'
 style = "bold blue"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🐧"
@@ -152,7 +153,7 @@ symbol = "🐧"
 [custom.systemd_stopping]
 shell = ["bash", "--noprofile", "--norc"]
 command = "systemctl is-system-running"
-when = '[ `systemctl is-system-running` == "stopping" ]'
+when = '[ `systemctl is-system-running` = "stopping" ]'
 style = "bold red"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🐧"
@@ -160,7 +161,7 @@ symbol = "🐧"
 [custom.systemd_offline]
 shell = ["bash", "--noprofile", "--norc"]
 command = "systemctl is-system-running"
-when = '[ `systemctl is-system-running` == "offline" ]'
+when = '[ `systemctl is-system-running` = "offline" ]'
 style = "bold red"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🐧"
@@ -168,7 +169,17 @@ symbol = "🐧"
 [custom.systemd_unknown]
 shell = ["bash", "--noprofile", "--norc"]
 command = "systemctl is-system-running"
-when = '[ `systemctl is-system-running` == "unknown" ]'
+when = '[ `systemctl is-system-running` = "unknown" ]'
 style = "bold red"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🐧"
+
+[custom.public_ip]
+disabled = true
+shell = ["bash", "--noprofile", "--norc"]
+command = "curl 2ip.ru"
+when = "[ `curl 2ip.ru` != `host -t a home.kido.ws | awk '{print$4}'` ]"
+style = "bold blue"
+format = " ❮ [$symbol($output)]($style)"
+symbol = "🌍"
+#🌎🌍🌏📡
