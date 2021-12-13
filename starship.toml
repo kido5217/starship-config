@@ -177,8 +177,8 @@ symbol = "🐧"
 [custom.public_ip]
 disabled = true
 shell = ["bash", "--noprofile", "--norc"]
-command = "curl 2ip.ru"
-when = "[ `curl 2ip.ru` != `host -t a home.kido.ws | awk '{print$4}'` ]"
+command = "curl -4 icanhazip.com."
+when = "[ `curl -4 icanhazip.com.` != `host -t a home.kido.ws | awk '{print$4}'` ]"
 style = "bold blue"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🌍"
