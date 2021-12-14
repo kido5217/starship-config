@@ -6,6 +6,7 @@ command_timeout = 5000
 
 # Main command prompt
 format = """
+${custom.screen}\
 $username$hostname\
 $shlvl\
 $directory\
@@ -42,7 +43,7 @@ format = "🖥 [$hostname]($style) ❯ "
 #ssh_only = false
 
 [shlvl]
-disabled = false
+disabled = true
 format = "[$symbol$shlvl]($style) ❯ "
 #symbol = "↕️"
 symbol = "📥"
@@ -193,3 +194,13 @@ style = "bold green"
 format = " ❮ [$symbol($output) ]($style)"
 symbol = "🛡"
 #🛡🧱🚜
+
+[custom.screen]
+shell = ["bash", "--noprofile", "--norc"]
+when = '[[ $TERM == screen* ]]'
+#when = "false"
+command = "echo $STY | awk -F '.' '{print$1}'"
+#command = "env"
+format = "[$symbol($output )]($style) ❯ "
+symbol = "🛟 "
+#🛟
