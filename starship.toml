@@ -2,7 +2,7 @@
 add_newline = false
 
 # Increase external command execution timeout
-command_timeout = 30000
+command_timeout = 5000
 
 # Main command prompt
 format = """
@@ -26,6 +26,7 @@ ${custom.systemd_maintenance}\
 ${custom.systemd_stopping}\
 ${custom.systemd_offline}\
 ${custom.systemd_unknown}\
+${custom.protonvpn}\
 ${custom.public_ip}\
 $time\
 $line_break\
@@ -183,3 +184,12 @@ style = "bold blue"
 format = " ❮ [$symbol($output)]($style)"
 symbol = "🌍"
 #🌎🌍🌏📡
+
+[custom.protonvpn]
+shell = ["bash", "--noprofile", "--norc"]
+when = "ip a | grep proton"
+command = "nmcli | grep ProtonVPN | awk '{print$4}'"
+style = "bold green"
+format = " ❮ [$symbol($output) ]($style)"
+symbol = "🛡"
+#🛡🧱🚜
