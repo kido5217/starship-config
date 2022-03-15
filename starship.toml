@@ -177,7 +177,7 @@ format = " ❮ [$symbol($output)]($style)"
 symbol = "🐧"
 
 [custom.public_ip]
-disabled = true
+#disabled = true
 shell = ["bash", "--noprofile", "--norc"]
 command = "curl -4 icanhazip.com."
 when = "[ `curl -4 icanhazip.com.` != `host -t a home.kido.ws | awk '{print$4}'` ]"
